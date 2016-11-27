@@ -276,7 +276,7 @@ tape('works with node native streams (net)', function(t) {
     var dup = duplexify(socket, socket)
 
     dup.once('data', function(chunk) {
-      t.same(chunk, Buffer('hello world'))
+      t.same(chunk, new Buffer('hello world'))
       server.close()
       socket.end()
       t.end()
@@ -287,6 +287,6 @@ tape('works with node native streams (net)', function(t) {
     var socket = net.connect(server.address().port)
     var dup = duplexify(socket, socket)
 
-    dup.write(Buffer('hello world'))
+    dup.write(new Buffer('hello world'))
   })
 })
